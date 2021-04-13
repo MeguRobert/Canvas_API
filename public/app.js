@@ -1,5 +1,5 @@
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d'); // 
 
 function init() {
   canvas.width = window.innerWidth;
@@ -26,7 +26,7 @@ function stroke(c)
 {
   color = c;
   ctx.strokeStyle = color;
-  ctx.stroke();
+  ctx.stroke(); //draw contour
 }
 
 function line(X, Y)
@@ -59,7 +59,7 @@ function draw(e)
 
 function drawing(x,y)
 {
-    setSize(10);
+    setSize(20);
     line(x,y);
     stroke(color);
 }

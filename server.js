@@ -1,13 +1,12 @@
 //load modules
 const express = require('express');
-const path = require('path');
 const app = express();
-const port = 3999;
+const port = 3999; //running
 const server = app.listen(port);
 const socket = require('socket.io');//conector
-const io = socket(server);     
+const io = socket(server); //connect with server
 
-console.log("My app is running ");
+console.log("My server is running ");
 
 io.sockets.on('connection', newConnection);
 function newConnection(socket) {

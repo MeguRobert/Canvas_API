@@ -6,8 +6,6 @@ function setup() {
 }
 setup();
 
-
-
 function clientDrawing(e)
 {
   var data = {
@@ -29,6 +27,6 @@ function newDrawing(data)
     ctx.beginPath();
   }
 }
-document.addEventListener('mousemove', clientDrawing, false);
-document.addEventListener('mousedown', start , false);
-document.addEventListener('mouseup', stop, false);
+document.addEventListener('mousemove', clientDrawing, false);  
+document.addEventListener('mousedown', start , false);         //without
+document.addEventListener('mouseup', stop, false);            //without
