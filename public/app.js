@@ -7,58 +7,66 @@ function init() {
 }
 init();
 
+let size = 10;
+let isdrawing = false;
+let color = 'black';
 
-const circle = {
-  x: 200,
-  y: 200,
-  size: 2,
-  dx: 5,
-  dy: 3,
-}
-
-function drawCircle(X, Y)
-{
-  circle.x = X;
-  circle.y = Y;
-  ctx.beginPath();
-  ctx.arc(circle.x, circle.y, circle.size, 0, Math.PI * 2);
-  ctx.fillStyle = 'coral';
+function fill(color) {
+  ctx.fillStyle = color;
   ctx.fill();
 }
 
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // clear the entire canvas
+function setSize(newsize) {
+  size = newsize;
+}
+function setColor(newcolor) {
+  color = newcolor;
+}
+function stroke(c)
+{
+  color = c;
+  ctx.strokeStyle = color;
+  ctx.stroke();
 }
 
-let is_drawing = false;
-function start(e)
+function line(X, Y)
 {
-  is_drawing = true;
-  let mX = e.clientX - canvas.offsetLeft;
-  let mY = e.clientY - canvas.offsetTop;
-  ctx.moveTo(mX, mY);
+  ctx.lineCap = 'round';
+  ctx.lineWidth = size;
+  ctx.lineTo(X, Y);
+}
+function circle(X, Y)
+{
+  ctx.moveTo(X, Y);
+  ctx.arc(X, Y, size, 0, Math.PI * 2);
+}
+
+function start(e) {
+  isdrawing = true;
+  ctx.beginPath();
+  draw(e);
+}
+function stop(e) {
+  isdrawing = false;
 }
 function draw(e)
 {
-
-  if (is_drawing) {
-    let mX = e.clientX - canvas.offsetLeft;
-    let mY = e.clientY - canvas.offsetTop;
-    ctx.lineTo(mX, mY);
-    // drawCircle(mX, mY);
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = "1";
-    ctx.stroke();
+  if (isdrawing)
+  {
+    drawing(e.clientX, e.clientY);
   }
 }
 
-function stop(e)
+function drawing(x,y)
 {
-  is_drawing = false;
+    setSize(10);
+    line(x,y);
+    stroke(color);
 }
 
-document.addEventListener('mousedown', start, false);
-document.addEventListener('mousemove', draw, false);
+
+document.addEventListener('mousedown', start, false); //click
+document.addEventListener('mousemove', draw, false);  //
 document.addEventListener('mouseup', stop, false);
 
 window.addEventListener('resize', init, false); //responsivitiy

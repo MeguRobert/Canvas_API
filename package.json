@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+    "start": "node server.js",
+    "server": "nodemon" 
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MeguRobert/Canvas_API.git"
@@ -22,6 +23,8 @@
   },
   "homepage": "https://github.com/MeguRobert/Canvas_API#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.0.1"
   }
 }
